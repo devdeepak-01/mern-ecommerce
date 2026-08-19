@@ -1,0 +1,16 @@
+{
+  "name": "mern-ecommerce-monorepo",
+  "version": "1.0.0",
+  "description": "MERN Ecommerce Monorepo Workspace",
+  "main": "backend/server.js",
+  "scripts": {
+    "install-all": "npm install && npm install --prefix backend && npm install --prefix frontend",
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "seed": "npm run seed --prefix backend"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

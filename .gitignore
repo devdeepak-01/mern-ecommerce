@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables & secrets (keep .env.example tracked)
+.env
+.env.local
+.env.*.local
+*.env
+backend/.env
+frontend/.env
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+
+# Logs & OS artifacts
+*.log
+logs/
+.DS_Store
+Thumbs.db
