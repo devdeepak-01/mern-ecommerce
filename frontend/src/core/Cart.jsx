@@ -15,6 +15,7 @@ import {
   Stack,
 } from '@mui/material';
 
+
 const Cart = () => {
   const [items, setItems] = useState([]);
   const [run, setRun] = useState(false);
@@ -44,6 +45,8 @@ const Cart = () => {
     </Stack>
   );
 
+
+
   const noItemsMessage = () => (
     <Box textAlign='center' py={4}>
       <Typography variant='h5' gutterBottom>
@@ -61,6 +64,7 @@ const Cart = () => {
       </Button>
     </Box>
   );
+
 
   return (
     <>
@@ -120,5 +124,6 @@ const Cart = () => {
     </>
   );
 };
+
 
 export default Cart;

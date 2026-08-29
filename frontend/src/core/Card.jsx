@@ -106,6 +106,8 @@ const Card = ({
     }
   };
 
+
+
   return (
     <>
       <CardM
@@ -137,7 +139,7 @@ const Card = ({
             '&:last-child': { pb: 2 },
           }}
         >
-          {/* Category label */}
+          
           {product.category?.name && (
             <Typography
               variant="caption"
@@ -155,7 +157,7 @@ const Card = ({
             </Typography>
           )}
 
-          {/* Seller badge */}
+        
           {product.user?.name && (
             <Typography
               variant="caption"
