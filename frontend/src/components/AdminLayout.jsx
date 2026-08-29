@@ -74,6 +74,8 @@ const AdminLayout = ({ children, title = 'Admin Panel' }) => {
     return <SettingsBrightness />;
   };
 
+  
+
   const baseMenuItems = [
     { text: 'Dashboard', to: '/admin/dashboard', icon: <DashboardIcon /> },
     { text: 'Products', to: '/admin/products', icon: <ProductsIcon /> },
@@ -443,5 +445,6 @@ const AdminLayout = ({ children, title = 'Admin Panel' }) => {
     </Box>
   );
 };
+
 
 export default AdminLayout;
