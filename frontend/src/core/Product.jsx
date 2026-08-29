@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from './Layout';
 import { read, listRelated } from './apiCore';
+
 import Card from './Card';
 import ShowImage from './ShowImage';
 import { addItem } from './cartHelpers';

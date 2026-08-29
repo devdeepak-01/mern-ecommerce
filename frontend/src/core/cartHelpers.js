@@ -20,6 +20,7 @@ export const addItem = (item = {}, count = 1, next = () => {}) => {
     // so pass the ids of each object/product
     // If the loop tries to add the same value again, it'll get ignored
     // ...with the array of ids we got on when first map() was used
+    
     // run map() on it again and return the actual product from the cart
 
     cart = Array.from(new Set(cart.map((p) => p._id))).map((id) => {
