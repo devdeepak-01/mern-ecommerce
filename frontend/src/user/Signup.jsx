@@ -18,6 +18,7 @@ import Menu from '../core/Menu.jsx';
 import { signup, isAuthenticated } from '../auth/index.js';
 
 export default function Signup() {
+
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -36,7 +37,7 @@ export default function Signup() {
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: '', loading: true });
-    signup({ name, email, password }).then((data) => {
+    signup({ name, email, password }).then ((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false, loading: false });
       } else {

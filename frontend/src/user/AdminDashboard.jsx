@@ -30,7 +30,7 @@ import {
   Inventory as InventoryIcon,
   Warning as WarningIcon,
   ErrorOutline as ErrorIcon,
-} from '@mui/icons-material';
+} from  '@mui/icons-material';
 import AdminLayout from '../components/AdminLayout';
 import { isAuthenticatedAdmin as isAuthenticated } from '../auth';
 import { getDashboardStats } from '../admin/apiAdmin';
@@ -38,7 +38,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 const AdminDashboard = () => {
-  const [stats, setStats] = useState(null);
+  const [stats , setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 

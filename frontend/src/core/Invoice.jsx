@@ -32,6 +32,7 @@ const Invoice = () => {
   const auth = isAuthenticated() || isAuthenticatedAdmin();
   const user = auth ? auth.user : null;
   const token = auth ? auth.token : null;
+  
   const userId = user ? user._id : null;
 
   useEffect(() => {
