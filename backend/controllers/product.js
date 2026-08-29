@@ -28,6 +28,7 @@ exports.productById = async (req, res, next, id) => {
     }
     req.product = product;
     next();
+
   } catch (err) {
     return res.status(400).json({ error: 'Product not found' });
   }
@@ -41,6 +42,7 @@ exports.read = (req, res) => {
 
 // Create a new product
 exports.create = async (req, res) => {
+
   const form = new formidable.IncomingForm();
   form.keepExtensions = true;
 
@@ -64,6 +66,7 @@ exports.create = async (req, res) => {
     }
 
     let product = new Product(parsedFields);
+
     if (req.profile && req.profile._id) {
       product.user = req.profile._id;
     }
@@ -74,6 +77,7 @@ exports.create = async (req, res) => {
     }
 
     const photo = Array.isArray(files.photo) ? files.photo[0] : files.photo;
+
     if (photo && photo.size > 0) {
       if (photo.size > 1000000) {
         return res
@@ -87,6 +91,7 @@ exports.create = async (req, res) => {
     try {
       const result = await product.save();
       result.photo = undefined; // Do not send back binary in JSON
+      
       res.json(result);
     } catch (error) {
       return res.status(400).json({ error: errorHandler(error) });

@@ -32,6 +32,7 @@ router.get('/seller/customers/:userId', requireSignin, isAuth, listSellerCustome
 // USER MANAGEMENT
 // ========================
 // List all users (Admin & SuperAdmin)
+
 router.get('/superadmin/users/:userId', requireSignin, isAuth, isAdmin, listAllUsers);
 router.get('/users/:userId', requireSignin, isAuth, isAdmin, listAllUsers);
 
@@ -50,6 +51,7 @@ router.put('/superadmin/user/role/:targetUserId/:userId', requireSignin, isAuth,
 // ========================
 // ROLE MANAGEMENT
 // ========================
+
 router.get('/superadmin/roles/:userId', requireSignin, isAuth, isSuperAdmin, listRoles);
 router.post('/superadmin/roles/:userId', requireSignin, isAuth, isSuperAdmin, createRole);
 router.put('/superadmin/roles/:roleId/:userId', requireSignin, isAuth, isSuperAdmin, updateRole);
@@ -58,6 +60,7 @@ router.delete('/superadmin/roles/:roleId/:userId', requireSignin, isAuth, isSupe
 // ========================
 // PERMISSION MANAGEMENT
 // ========================
+
 router.get('/superadmin/permissions/:userId', requireSignin, isAuth, isSuperAdmin, listPermissions);
 router.put('/superadmin/roles/:roleId/permissions/:userId', requireSignin, isAuth, isSuperAdmin, updateRolePermissions);
 

@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 // import routes
@@ -52,6 +53,7 @@ const seedSystemDefaults = async () => {
       const adminName = process.env.INITIAL_ADMIN_NAME || 'Seller Admin 1';
 
       const emailExists = await User.findOne({ email: adminEmail });
+
       if (emailExists) {
         emailExists.role = 'admin';
         await emailExists.save();
@@ -71,12 +73,14 @@ const seedSystemDefaults = async () => {
 
     // 4. Seed SuperAdmin if not exists
     const superAdminExists = await User.findOne({ role: 'superadmin' });
+
     if (!superAdminExists) {
       const superEmail = process.env.SUPERADMIN_EMAIL || 'superadmin@cara.test';
       const superPassword = process.env.SUPERADMIN_PASSWORD || 'superadminPassword123';
       const superName = process.env.SUPERADMIN_NAME || 'Global SuperAdmin';
 
       const userByEmail = await User.findOne({ email: superEmail });
+
       if (userByEmail) {
         userByEmail.role = 'superadmin';
         userByEmail.isActive = true;
@@ -101,6 +105,7 @@ const seedSystemDefaults = async () => {
 
 // db connection
 const connectDB = async () => {
+  
   try {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('MongoDB Connected');
