@@ -7,11 +7,13 @@ exports.orderById = async (req, res, next, id) => {
       .populate('products.product', 'name price')
       .populate('user', '_id name email address')
       .exec();
+
     if (!order) {
       return res.status(400).json({
         error: 'Order not found',
       });
     }
+
     req.order = order;
     next();
   } catch (err) {
@@ -23,7 +25,9 @@ exports.orderById = async (req, res, next, id) => {
 
 exports.create = async (req, res) => {
   try {
+
     req.body.order.user = req.profile;
+
     const order = new Order(req.body.order);
     const data = await order.save();
     res.json(data);
@@ -71,6 +75,7 @@ const getValidNextStatuses = (currentStatus) => {
 
 exports.updateOrderStatus = async (req, res) => {
   try {
+
     const order = await Order.findById(req.body.orderId);
     if (!order) {
       return res.status(404).json({
@@ -79,6 +84,7 @@ exports.updateOrderStatus = async (req, res) => {
     }
 
     const validNext = getValidNextStatuses(order.status);
+    
     if (!validNext.includes(req.body.status)) {
       return res.status(400).json({
         error: `Invalid status transition from "${order.status}" to "${req.body.status}". Allowed next steps: ${validNext.join(', ')}`,

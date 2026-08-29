@@ -9,25 +9,33 @@ exports.categoryById = async (req, res, next, id) => {
         error: "Category doesn't exist",
       });
     }
+
     req.category = category;
     next();
+
   } catch (err) {
     return res.status(400).json({
       error: errorHandler(err),
     });
+
   }
 };
 
 exports.create = async (req, res) => {
+
   const category = new Category(req.body);
   try {
+
     const data = await category.save();
     res.json({ data });
+
   } catch (err) {
+
     return res.status(400).json({
       error: errorHandler(err),
     });
   }
+
 };
 
 exports.read = (req, res) => {
@@ -35,6 +43,7 @@ exports.read = (req, res) => {
 };
 
 exports.update = async (req, res) => {
+
   const category = req.category;
   category.name = req.body.name;
   try {
@@ -48,6 +57,7 @@ exports.update = async (req, res) => {
 };
 
 exports.remove = async (req, res) => {
+
   const category = req.category;
   try {
     await category.remove();
@@ -59,9 +69,11 @@ exports.remove = async (req, res) => {
       error: errorHandler(err),
     });
   }
+
 };
 
 exports.list = async (req, res) => {
+
   try {
     const data = await Category.find().exec();
     res.json(data);
@@ -70,4 +82,5 @@ exports.list = async (req, res) => {
       error: errorHandler(err),
     });
   }
+  
 };

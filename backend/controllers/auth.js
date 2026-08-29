@@ -9,6 +9,7 @@ require('dotenv').config();
 
 // Helper to resolve all effective permissions for a user
 const getUserEffectivePermissions = async (user) => {
+
   if (!user) return [];
   if (user.role === 'superadmin') {
     return DEFAULT_PERMISSIONS.map((p) => p.key);
@@ -24,8 +25,10 @@ const getUserEffectivePermissions = async (user) => {
 
 exports.signup = async (req, res) => {
   const user = new User({ ...req.body, role: 'customer', isActive: true });
+
   try {
     const data = await user.save();
+
     if (!data) {
       return res.status(400).json({
         error: 'Signup failed',
@@ -99,6 +102,7 @@ exports.signout = (req, res) => {
 };
 
 exports.requireSignin = expressjwt({
+
   secret: process.env.JWT_SECRET,
   algorithms: ['HS256'],
   userProperty: 'auth',
@@ -106,6 +110,7 @@ exports.requireSignin = expressjwt({
 
 exports.isAuth = (req, res, next) => {
   let user = req.profile && req.auth && req.profile._id.toString() === req.auth._id.toString();
+
   if (!user) {
     return res.status(403).json({
       error: 'Access denied',
@@ -126,6 +131,7 @@ exports.isAdmin = (req, res, next) => {
 
 // Strictly allows SuperAdmin
 exports.isSuperAdmin = (req, res, next) => {
+
   if (!req.profile || req.profile.role !== 'superadmin') {
     return res.status(403).json({
       error: 'Super Admin resource! Access denied',
@@ -136,6 +142,7 @@ exports.isSuperAdmin = (req, res, next) => {
 
 // Dynamic permission-based authorization middleware factory
 exports.hasPermission = (permissionKey) => {
+  
   return async (req, res, next) => {
     try {
       if (!req.profile) {
