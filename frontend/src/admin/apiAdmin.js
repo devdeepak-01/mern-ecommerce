@@ -18,6 +18,8 @@ export const createCategory = (userId, token, category) => {
     });
 };
 
+
+
 export const createProduct = (userId, token, product) => {
   return fetch(`${API}/product/create/${userId}`, {
     method: 'POST',

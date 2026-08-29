@@ -84,7 +84,6 @@ const AddProduct = () => {
 
   const isFormValid = validate();
 
-  // load categories and set form data
   const init = () => {
     getCategories().then((data) => {
       if (data.error) {
@@ -105,7 +104,7 @@ const AddProduct = () => {
   const handleChange = (name) => (event) => {
     const value = name === 'photo' ? event.target.files[0] : event.target.value;
 
-    // Update formData
+    
     const newFormData = new FormData();
     for (let [key, val] of formData.entries()) {
       if (key !== name) {
@@ -126,6 +125,7 @@ const AddProduct = () => {
     // Mark field as touched
     setTouched((t) => ({ ...t, [name]: true }));
   };
+
 
   const handleBlur = (field) => () => {
     setTouched((t) => ({ ...t, [field]: true }));
@@ -167,6 +167,7 @@ const AddProduct = () => {
       }
     });
   };
+
 
   const showError = () => (
     <Alert severity="error" sx={{ mb: 3, display: error ? '' : 'none' }} onClose={() => setValues((v) => ({ ...v, error: '' }))}>
@@ -422,5 +423,7 @@ const AddProduct = () => {
     </AdminLayout>
   );
 };
+
+
 
 export default AddProduct;

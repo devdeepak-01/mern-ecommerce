@@ -119,7 +119,6 @@ const ManageBilling = () => {
     return orders.filter((o) => getPaymentStatus(o.status) !== 'Paid').length;
   }, [orders]);
 
-  // Filtered orders
   const filteredOrders = useMemo(() => {
     return orders.filter((order) => {
       const orderIdStr = String(order._id || '').toLowerCase();
@@ -195,7 +194,7 @@ const ManageBilling = () => {
           </Card>
         </Grid>
 
-        {/* Total Invoices */}
+       
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card elevation={1} sx={{ borderRadius: 2, height: '100%' }}>
             <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 2, p: 2.5 }}>
