@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-import {
+import { 
   Grid,
   Card,
   CardContent,
@@ -13,6 +13,7 @@ import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
 import { read, update, updateUser } from './apiUser';
 import UserSidebar from '../components/UserSidebar';
+
 
 const Profile = () => {
   const { userId } = useParams();
